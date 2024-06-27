@@ -7,7 +7,8 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 import React, { ReactNode } from "react";
 
-import { sportTypesArr } from "../constants";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 const SelectItem: React.FC<{
   children: ReactNode;
@@ -33,6 +34,10 @@ const SelectItem: React.FC<{
 });
 
 const SpecificSportSelect = () => {
+  const sportSpecifics = useQuery(api.sport_specifics.get);
+
+  console.log(sportSpecifics);
+
   return (
     <Select.Root>
       <Select.Trigger
@@ -51,8 +56,8 @@ const SpecificSportSelect = () => {
           </Select.ScrollUpButton>
           <Select.Viewport className="p-[5px]">
             <Select.Group>
-              {sportTypesArr.map(({ value, label }) => (
-                <SelectItem key={value} value={value}>
+              {sportSpecifics?.map(({ _id, value, label }) => (
+                <SelectItem key={_id} value={value}>
                   {label}
                 </SelectItem>
               ))}
