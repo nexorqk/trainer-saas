@@ -21,6 +21,7 @@ const SelectItem: React.FC<{
         className
       )}
       {...props}
+      // @ts-ignore
       ref={forwardedRef}
     >
       <Select.ItemText>{children}</Select.ItemText>
