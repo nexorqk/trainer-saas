@@ -1,5 +1,3 @@
-import * as Form from "@radix-ui/react-form";
-
 import SpecificSportSelect from "./SpecificSportSelect";
 
 const TrainerSignUp = () => (
