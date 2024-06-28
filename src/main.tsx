@@ -4,9 +4,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
-const convex = new ConvexReactClient(
-  "https://superb-reindeer-745.convex.cloud"
-);
+const deploymentUrl =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_CONVEX_URL
+    : process.env.VITE_CONVEX_URL;
+
+const convex = new ConvexReactClient(deploymentUrl);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
