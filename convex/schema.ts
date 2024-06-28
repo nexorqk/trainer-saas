@@ -6,4 +6,9 @@ export default defineSchema({
     value: v.string(),
     label: v.string(),
   }),
+  users: defineTable({
+    username: v.string(),
+    password: v.string(),
+    sportType: v.string(),
+  }),
 });
