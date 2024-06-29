@@ -1,3 +1,3 @@
 # trainer-sass
 
-[DEPLOY](https://nexorqk.github.io/trainer-sass/)
+[DEPLOY](https://nexorqk.github.io/trainer-saas/)

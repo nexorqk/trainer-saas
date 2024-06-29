@@ -7,7 +7,7 @@ const RegisterPage = () => (
     <h2 className="mb-6 text-5xl font-bold text-white tracking-tighter">
       Регистрация
     </h2>
-    <div className="min-h-[510px]">
+    <div className="min-h-[600px]">
       <Tabs.Root
         className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA2"
         defaultValue="tab1"
