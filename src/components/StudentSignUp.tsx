@@ -1,10 +1,7 @@
 import * as Form from "@radix-ui/react-form";
-import { FormEvent, useEffect, useState } from "react";
-import Select, { MultiValue } from "react-select";
-import { specificSportArr } from "../constants";
-import SpecificSportSelect from "./SpecificSportSelect";
+import { FormEvent, useState } from "react";
 
-const TrainerSignUp = () => {
+const StudentSignUp = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -12,45 +9,22 @@ const TrainerSignUp = () => {
   const [passowrd, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isCorrectPassword, setIsCorrectPassowrd] = useState(true);
-  const [specificSport, setSpecificSport] = useState("");
-  const [sportTypeArr, setSportTypeArr] = useState<MultiValue<string>>([]);
-  const [sportTypeNumber, setSportTypeNumber] = useState(0);
-  const [isSpecific, setIsSpecific] = useState(true);
-  const [isSportType, setIsSportType] = useState(true);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (!specificSport) {
-      setIsSpecific(false);
-    } else {
-      setIsSpecific(true);
-    }
     if (passowrd !== confirmPassword) {
       setIsCorrectPassowrd(false);
     } else {
       setIsCorrectPassowrd(true);
     }
-    if (sportTypeArr.length < 1) {
-      setIsSportType(false);
-    } else {
-      setIsSportType(true);
-    }
 
     console.log("Success");
   };
 
-  useEffect(() => {
-    specificSportArr.forEach((item, index) => {
-      if (Object.keys(item)[0] === specificSport) {
-        setSportTypeNumber(index);
-      }
-    });
-  }, [specificSport]);
-
   return (
     <>
       <p className="mb-5 text-mauve11 text-[15px] leading-normal">
-        Зарегестрируйтесь в качестве тренера, выбрав спецификацию
+        Зарегестрируйтесь в качестве ученика
       </p>
       <Form.Root onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row justify-between">
@@ -238,39 +212,6 @@ const TrainerSignUp = () => {
             </Form.Field>
           </div>
         </div>
-        <fieldset className="mb-[15px] w-full flex flex-col justify-start">
-          {!isSpecific && (
-            <p className="ml-auto text-[13px] text-violet12 opacity-[0.8] mb-2.5">
-              Пожалуйста, выберите спецификацию
-            </p>
-          )}
-          <SpecificSportSelect
-            specificSport={specificSport}
-            setSpecificSport={setSpecificSport}
-          />
-        </fieldset>
-        <fieldset>
-          {!isSportType && (
-            <p className="ml-auto text-[13px] text-violet12 opacity-[0.8] mb-2.5">
-              Пожалуйста, выберите специфику
-            </p>
-          )}
-          <Select
-            placeholder="Выберите специфику"
-            noOptionsMessage={() => <span>Нет опций</span>}
-            value={sportTypeArr}
-            onChange={(event) => setSportTypeArr(event)}
-            isMulti
-            name="sportTypes"
-            // @ts-ignore
-            options={
-              !specificSport
-                ? []
-                : specificSportArr[sportTypeNumber][specificSport]
-            }
-            closeMenuOnSelect={false}
-          />
-        </fieldset>
         <div className="flex justify-end mt-5">
           <button
             type="submit"
@@ -283,4 +224,5 @@ const TrainerSignUp = () => {
     </>
   );
 };
-export default TrainerSignUp;
+
+export default StudentSignUp;

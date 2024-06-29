@@ -1,5 +1,5 @@
 import * as Tabs from "@radix-ui/react-tabs";
-
+import StudentSignUp from "../components/StudentSignUp";
 import TrainerSignUp from "../components/TrainerSignUp";
 
 const RegisterPage = () => (
@@ -7,9 +7,9 @@ const RegisterPage = () => (
     <h2 className="mb-6 text-5xl font-bold text-white tracking-tighter">
       Регистрация
     </h2>
-    <div className="min-h-[600px]">
+    <div className="min-h-[500px]">
       <Tabs.Root
-        className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA2"
+        className="flex flex-col w-[300px] md:w-[600px] shadow-[0_2px_10px] shadow-blackA2"
         defaultValue="tab1"
       >
         <Tabs.List
@@ -39,55 +39,7 @@ const RegisterPage = () => (
           className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
           value="tab2"
         >
-          <p className="mb-5 text-mauve11 text-[15px] leading-normal">
-            Зарегестрируйтесь в качестве ученика
-          </p>
-          <fieldset className="mb-[15px] w-full flex flex-col justify-start">
-            <label
-              className="text-[13px] leading-none mb-2.5 text-violet12 block"
-              htmlFor="username"
-            >
-              Имя
-            </label>
-            <input
-              className="grow shrink-0 rounded px-2.5 text-[15px] leading-none text-violet11 shadow-[0_0_0_1px] shadow-violet7 h-[35px] focus:shadow-[0_0_0_2px] focus:shadow-violet8 outline-none"
-              id="username"
-              placeholder="Имя пользователя"
-            />
-          </fieldset>
-          <fieldset className="mb-[15px] w-full flex flex-col justify-start">
-            <label
-              className="text-[13px] leading-none mb-2.5 text-violet12 block"
-              htmlFor="password"
-            >
-              Пароль
-            </label>
-            <input
-              className="grow shrink-0 rounded px-2.5 text-[15px] leading-none text-violet11 shadow-[0_0_0_1px] shadow-violet7 h-[35px] focus:shadow-[0_0_0_2px] focus:shadow-violet8 outline-none"
-              id="password"
-              type="password"
-              placeholder="Введите пароль"
-            />
-          </fieldset>
-          <fieldset className="mb-[15px] w-full flex flex-col justify-start">
-            <label
-              className="text-[13px] leading-none mb-2.5 text-violet12 block"
-              htmlFor="confirmPassword"
-            >
-              Пароль
-            </label>
-            <input
-              className="grow shrink-0 rounded px-2.5 text-[15px] leading-none text-violet11 shadow-[0_0_0_1px] shadow-violet7 h-[35px] focus:shadow-[0_0_0_2px] focus:shadow-violet8 outline-none"
-              id="confirmPassword"
-              type="password"
-              placeholder="Подтвердите пароль"
-            />
-          </fieldset>
-          <div className="flex justify-end mt-5">
-            <button className="inline-flex items-center justify-center rounded px-[15px] text-[15px] leading-none font-medium h-[35px] bg-green4 text-green11 hover:bg-green5 focus:shadow-[0_0_0_2px] focus:shadow-green7 outline-none cursor-default">
-              Save changes
-            </button>
-          </div>
+          <StudentSignUp />
         </Tabs.Content>
       </Tabs.Root>
     </div>
