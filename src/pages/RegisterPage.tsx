@@ -4,7 +4,7 @@ import TrainerSignUp from "../components/TrainerSignUp";
 
 const RegisterPage = () => (
   <>
-    <h2 className="mb-6 text-5xl font-bold text-white tracking-tighter">
+    <h2 className="mb-6 text-3xl lg:text-5xl font-bold text-white tracking-tighter">
       Регистрация
     </h2>
     <div className="min-h-[500px]">

@@ -262,6 +262,7 @@ const TrainerSignUp = () => {
             onChange={(event) => setSportTypeArr(event)}
             isMulti
             name="sportTypes"
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             options={
               !specificSport
