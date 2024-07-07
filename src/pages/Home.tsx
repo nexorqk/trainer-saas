@@ -1,12 +1,13 @@
-import Header from "../components/Header";
+import { Typography } from "@mui/material";
+import Header from "../components/header/Header";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <h1 className="text-5xl text-center text-white py-6 lg:py-14">
+      <Typography p={6} textAlign="center" variant="h1">
         Добро пожаловать в Trainers App
-      </h1>
+      </Typography>
     </>
   );
 };

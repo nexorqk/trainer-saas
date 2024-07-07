@@ -9,6 +9,6 @@ export default defineSchema({
   users: defineTable({
     username: v.string(),
     password: v.string(),
-    sportType: v.string(),
+    sportType: v.optional(v.string()),
   }),
 });

@@ -1,9 +1,8 @@
-const UsersList = () => {
-  return (
-    <div>
-      <h1>Users List</h1>
-    </div>
-  );
-};
+import { Typography } from "@mui/material";
 
+const UsersList = () => (
+  <div>
+    <Typography variant="h1">Users List</Typography>
+  </div>
+);
 export default UsersList;

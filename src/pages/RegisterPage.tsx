@@ -1,49 +1,67 @@
-import * as Tabs from "@radix-ui/react-tabs";
-import StudentSignUp from "../components/StudentSignUp";
-import TrainerSignUp from "../components/TrainerSignUp";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { ReactNode, SyntheticEvent, useState } from "react";
+import StudentSignUp from "../components/student-sign-up/StudentSignUp";
+import TrainerSignUp from "../components/trainer-sign-up/TrainerSignUp";
 
-const RegisterPage = () => (
-  <>
-    <h2 className="mb-6 text-3xl lg:text-5xl font-bold text-white tracking-tighter">
-      Регистрация
-    </h2>
-    <div className="min-h-[500px]">
-      <Tabs.Root
-        className="flex flex-col w-[300px] md:w-[600px] shadow-[0_2px_10px] shadow-blackA2"
-        defaultValue="tab1"
-      >
-        <Tabs.List
-          className="shrink-0 flex border-b border-mauve6"
-          aria-label="Manage your account"
-        >
-          <Tabs.Trigger
-            className="bg-white px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-violet11 data-[state=active]:text-violet11 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black outline-none cursor-default"
-            value="tab1"
-          >
-            Тренер
-          </Tabs.Trigger>
-          <Tabs.Trigger
-            className="bg-white px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-violet11 data-[state=active]:text-violet11 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black outline-none cursor-default"
-            value="tab2"
-          >
-            Ученик
-          </Tabs.Trigger>
-        </Tabs.List>
-        <Tabs.Content
-          className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
-          value="tab1"
-        >
-          <TrainerSignUp />
-        </Tabs.Content>
-        <Tabs.Content
-          className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
-          value="tab2"
-        >
-          <StudentSignUp />
-        </Tabs.Content>
-      </Tabs.Root>
-    </div>
-  </>
+type TabPanelProps = {
+  children?: ReactNode;
+  index: number;
+  value: number;
+};
+
+const CustomTabPanel = ({
+  children,
+  value,
+  index,
+  ...other
+}: TabPanelProps) => (
+  <div
+    role="tabpanel"
+    hidden={value !== index}
+    id={`simple-tabpanel-${index}`}
+    aria-labelledby={`simple-tab-${index}`}
+    {...other}
+  >
+    {value === index && <div>{children}</div>}
+  </div>
 );
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+const RegisterPage = () => {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box maxWidth={600} width="100%" m="0 auto">
+      <Typography textAlign="center" variant="h2" gutterBottom fontWeight={500}>
+        Регистрация
+      </Typography>
+      <Tabs
+        sx={{ width: 600 }}
+        value={value}
+        onChange={handleChange}
+        aria-label="Register tabs"
+      >
+        <Tab sx={{ width: 300 }} label="Student" {...a11yProps(0)} />
+        <Tab sx={{ width: 300 }} label="Trainer" {...a11yProps(1)} />
+      </Tabs>
+      <CustomTabPanel value={value} index={0}>
+        <StudentSignUp />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <TrainerSignUp />
+      </CustomTabPanel>
+    </Box>
+  );
+};
 
 export default RegisterPage;

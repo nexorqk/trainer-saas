@@ -21,6 +21,7 @@
 Регистрация:
 
 - валидация полей(без фанатизма)
+- TODO https://www.framer.com/motion/ animation
 
 ---
 
